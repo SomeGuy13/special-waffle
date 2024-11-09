@@ -2,7 +2,7 @@
 
 #[derive(Debug)]
 #[derive(PartialEq)]
-struct Vec3 {
+pub struct Vec3 {
     x: f64,
     y: f64,
     z: f64,
@@ -10,38 +10,38 @@ struct Vec3 {
 
 impl Vec3 {
     // Creates a new vector
-    fn new(x: f64, y: f64, z: f64) -> Self {
+    pub fn new(x: f64, y: f64, z: f64) -> Self {
         Vec3 {x, y, z}
     }
 
     // Creates a new vector at zero
-    fn zero() -> Self {
+    pub fn zero() -> Self {
         Vec3 {x: 0.0, y: 0.0, z: 0.0}
     }
 
     // The following 3 functions return their respective
     // values within the vector
-    fn x(&self) -> f64 {
+    pub fn x(&self) -> f64 {
         self.x
     }
 
-    fn y(&self) -> f64 {
+    pub fn y(&self) -> f64 {
         self.y
     } 
 
-    fn z(&self) -> f64 {
+    pub fn z(&self) -> f64 {
         self.z
     }
 
     // Makes the vector negative
-    fn negateive(&mut self) {
+    pub fn negateive(&mut self) {
         self.x = -self.x;
         self.y = -self.y;
         self.z = -self.z;
     }
 
     // Returns the value at an index of the vector
-    fn index(&self, i: usize) -> f64 {
+    pub fn index(&self, i: usize) -> f64 {
         match i {
             0 => self.x,
             1 => self.y,
@@ -51,7 +51,7 @@ impl Vec3 {
     }
 
     // Returns a mutable value at an index of the vector
-    fn index_mut(&mut self, i: usize) -> &mut f64 {
+    pub fn index_mut(&mut self, i: usize) -> &mut f64 {
         match i {
             0 => &mut self.x,
             1 => &mut self.y,
@@ -61,7 +61,7 @@ impl Vec3 {
     }
 
     // Adds two vectors together
-    fn add_to(&self, other: &Self) -> Self {
+    pub fn add_to(&self, other: &Self) -> Self {
         Vec3 {
             x: self.x + other.x,
             y: self.y + other.y,
@@ -70,7 +70,7 @@ impl Vec3 {
     }
 
     // Subtracts two vectors
-    fn subtract_from(&self, other: &Self) -> Self {
+    pub fn subtract_from(&self, other: &Self) -> Self {
         Vec3 {
             x: self.x - other.x,
             y: self.y - other.y,
@@ -79,7 +79,7 @@ impl Vec3 {
     }
 
     // Multiplies two vectors
-    fn multiply_by(&self, other: &Self) -> Self {
+    pub fn multiply_by(&self, other: &Self) -> Self {
         Vec3 {
             x: self.x * other.x,
             y: self.y * other.y,
@@ -88,7 +88,7 @@ impl Vec3 {
     }
 
     // Divides two vectors
-    fn divide_by(&self, other: &Self) -> Self {
+    pub fn divide_by(&self, other: &Self) -> Self {
         Vec3 {
             x: self.x / other.x,
             y: self.y / other.y,
@@ -97,12 +97,12 @@ impl Vec3 {
     }
 
     // Returns the dot product of two vectors
-    fn dot(&self, other: &Self) -> f64 {
+    pub fn dot(&self, other: &Self) -> f64 {
         self.x * other.x + self.y * other.y + self.z * other.z
     }
 
     // Returns the cross product of two vectors
-    fn cross(&self, other: &Self) -> Self {
+    pub fn cross(&self, other: &Self) -> Self {
         Vec3 {
             x: self.y * other.z - self.z * other.y,
             y: self.z * other.x - self.x * other.z,
@@ -111,7 +111,7 @@ impl Vec3 {
     }
 
     // Normalizes the vector
-    fn normalize(&self) -> Self {
+    pub fn normalize(&self) -> Self {
         let magnitude = self.magnitude();
         Vec3{
             x: self.x / magnitude,
@@ -121,7 +121,7 @@ impl Vec3 {
     }
 
     // Returns the magnitude of the vector
-    fn magnitude(&self) -> f64 {
+    pub fn magnitude(&self) -> f64 {
         self.x * self.x + self.y * self.y + self.z * self.z
     }
 }
